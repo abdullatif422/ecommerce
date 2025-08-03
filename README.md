@@ -34,3 +34,17 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## TODO
+
+`
+- Create basic project with next js and type script
+- Add required dependecies and project folder strcture.
+    - This should satisfy: 
+    - Styles (font constants)
+    - Utils
+    - Elements/components (custom tags)
+    - Wrappers
+- Add mockapi / check with offline fakerjs with endpoints simulattion, if NEXT.js do this ignore implementation and check how to link the fakerjs to nextJS api routes
+- Check for best UI libraries, Icon libraries and integrate those
+`
