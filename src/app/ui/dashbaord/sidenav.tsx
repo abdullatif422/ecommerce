@@ -1,6 +1,6 @@
 "use client"; // This directive must be at the very top
 import React, { useState } from 'react';
-import { redirect, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 function Sidenav() {
     const [isOpen, setIsOpen] = useState(false);

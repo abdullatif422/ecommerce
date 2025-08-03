@@ -1,8 +1,7 @@
 import React from 'react'
 
-export default function page(props: any) {
-    const { children } = props;
+export default function Page() {
   return (
-    <div>{children}</div>
+    <div>Welcome to Home Page</div>
   )
 }
