@@ -1,25 +1,23 @@
 // app/swagger/page.tsx
 
-'use client'; // This component needs to be client-side to render Swagger UI
+"use client"; // This component needs to be client-side to render Swagger UI
 
-import React, { useEffect, useState } from 'react';
-import SwaggerUI from 'swagger-ui-react';
-import 'swagger-ui-react/swagger-ui.css';
-import { useRouter } from 'next/navigation';
+import React, { useEffect, useState } from "react";
+import SwaggerUI from "swagger-ui-react";
+import "swagger-ui-react/swagger-ui.css";
 
 export default function SwaggerPage() {
   const [spec, setSpec] = useState(null);
-  const router = useRouter();
 
   useEffect(() => {
     // Fetch the OpenAPI specification from your API route.
-    fetch('/api/swagger')
+    fetch("/api/swagger")
       .then((res) => res.json())
       .then((data) => {
         setSpec(data);
       })
       .catch((err) => {
-        console.error('Failed to fetch OpenAPI spec:', err);
+        console.error("Failed to fetch OpenAPI spec:", err);
       });
   }, []);
 
