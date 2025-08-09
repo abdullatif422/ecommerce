@@ -3,14 +3,8 @@
 import { neon } from "@neondatabase/serverless";
 import bcrypt from "bcrypt";
 
-// Initialize the Neon database client with your connection string.
-// Make sure your DATABASE_URL is set in your environment variables.
 const sql = neon(process.env.DATABASE_URL || "");
 
-/**
- * Handles POST requests for user signup.
- * Creates a new user in the database with a hashed password.
- */
 export async function POST(request: Request) {
   try {
     const { email, password } = await request.json();

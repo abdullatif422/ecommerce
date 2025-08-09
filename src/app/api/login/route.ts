@@ -1,25 +1,76 @@
-// app/api/login/route.ts
-
 import { neon } from "@neondatabase/serverless";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import type { NextRequest } from "next/server";
 
-// Initialize the Neon database client with your connection string.
-// Make sure your DATABASE_URL and JWT_SECRET are set in your environment variables.
 const sql = neon(process.env.DATABASE_URL || "");
 const jwtSecret = process.env.JWT_SECRET;
 
-// Define a type for the user object from the database.
-// interface User {
-//   id: number;
-//   email: string;
-//   password: string;
-// }
-
 /**
- * Handles POST requests for user login.
- * Finds a user, verifies their password, and generates a JWT token.
+ * @swagger
+ * /api/login:
+ *   post:
+ *     summary: User login
+ *     description: Authenticates a user and returns a JWT token.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 format: email
+ *               password:
+ *                type: string
+ *               format: password
+ * *     responses:
+ *       200:
+ *         description: Successful login with JWT token.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                 token:
+ *                   type: string
+ *                 user:
+ *                   type: object
+ *                   properties:
+ *                     id:
+ *                       type: integer
+ *                     email:
+ *                       type: string
+ *       400:
+ *         description: Bad request, missing email or password.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *       401:
+ *         description: Unauthorized, invalid credentials.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *       500:
+ *         description: Internal server error.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
  */
 export async function POST(request: NextRequest) {
   try {
