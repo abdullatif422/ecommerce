@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Login = () => {
   return (
@@ -14,7 +14,10 @@ const Login = () => {
         </div>
         <form className="space-y-6" action="#" method="POST">
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+            >
               Email address
             </label>
             <div className="mt-1">
@@ -29,7 +32,10 @@ const Login = () => {
             </div>
           </div>
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+            >
               Password
             </label>
             <div className="mt-1">
@@ -51,12 +57,18 @@ const Login = () => {
                 type="checkbox"
                 className="w-4 h-4 text-indigo-600 border-gray-300 rounded dark:border-gray-600 focus:ring-indigo-500"
               />
-              <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900 dark:text-gray-300">
+              <label
+                htmlFor="remember-me"
+                className="ml-2 block text-sm text-gray-900 dark:text-gray-300"
+              >
                 Remember me
               </label>
             </div>
             <div className="text-sm">
-              <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">
+              <a
+                href="#"
+                className="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300"
+              >
                 Forgot your password?
               </a>
             </div>
@@ -72,8 +84,11 @@ const Login = () => {
         </form>
         <div className="text-sm text-center">
           <p className="text-gray-600 dark:text-gray-400">
-            Don't have an account?{' '}
-            <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">
+            Don't have an account?{" "}
+            <a
+              href="#"
+              className="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300"
+            >
               Sign up
             </a>
           </p>

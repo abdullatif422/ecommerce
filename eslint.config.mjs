@@ -78,7 +78,7 @@ const eslintconfig = [
       "semi": ["error", "always"], 
       
       // Enforces single quotes for strings unless a string contains a single quote.
-      "quotes": ["error", "single", { "avoidEscape": true }],
+      "quotes": ["error", "double", { "avoidEscape": true }],
       
       // Enforces consistent indentation, using 2 spaces.
       "indent": ["error", 2],
