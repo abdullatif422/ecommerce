@@ -1,16 +1,24 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
+// eslint.config.js
+import js from "@eslint/js";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+export default [
+  // This is a configuration object
+  {
+    // These properties are all inside the object
+    files: ["**/*.js", "**/*.mjs"],
+    languageOptions: {
+      ecmaVersion: 2022,
+      sourceType: "module",
+    },
+    rules: {
+      ...js.configs.recommended.rules,
+      "no-unused-vars": "warn",
+    },
+  },
 
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
-
-const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
+  // Another configuration object for different file types
+  {
+    files: ["**/*.jsx"],
+    // ... other properties for JSX files
+  },
 ];
-
-export default eslintConfig;
