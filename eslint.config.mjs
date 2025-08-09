@@ -13,9 +13,7 @@ const compat = new FlatCompat({
   recommendedConfig: ts.configs["eslint-recommended"],
 });
 
-const eslintConfig = [
-  // This object contains settings for all files.
-  // We'll define language options and global variables here.
+const eslintconfig = [
   {
     languageOptions: {
       ecmaVersion: 2022,
@@ -27,15 +25,10 @@ const eslintConfig = [
     },
   },
 
-  // This object extends recommended configs for Next.js, TypeScript, and Prettier.
-  // It's a convenient way to get a solid base of rules.
   ...compat.config({
     extends: ["next", "prettier"],
-    // `files` is intentionally left out here as `compat.config` is for
-    // converting legacy configs and doesn't directly handle file matching.
   }),
 
-  // This is a dedicated configuration object for your TypeScript files.
   {
     files: ["**/*.ts", "**/*.tsx"],
     languageOptions: {
@@ -53,23 +46,54 @@ const eslintConfig = [
       ...ts.configs.recommended.rules,
 
       // Your custom rules go here.
-      // E.g., setting unused variables to 'warn' instead of the default 'error'.
       "@typescript-eslint/no-unused-vars": "warn",
-      
-      // Prevent HTML links for pages in Next.js
       "@next/next/no-html-link-for-pages": "off",
-
-      // Warn on missing dependencies in React hooks
       "react-hooks/exhaustive-deps": "warn",
-
-      // Warn on missing keys for list items
       "react/jsx-key": "warn",
-
-      // Turn off this rule which can be annoying in some cases
       'react/no-unescaped-entities': 'off',
       '@next/next/no-page-custom-font': 'off',
+      
+      // --- Added Rules for Common Developer Mistakes ---
+
+      // Ensures `const` is used for variables that are never reassigned.
+      // This helps with code predictability and prevents bugs.
+      "prefer-const": "error",
+      
+      // Enforces a consistent line ending style to prevent issues on different OS.
+      "linebreak-style": ["error", "unix"],
+      
+      // Disallows trailing spaces at the end of lines.
+      "no-trailing-spaces": "error",
+
+      // Enforces a consistent semi-colon style.
+      // It's recommended to choose one and stick with it.
+      // For this example, we enforce semicolons.
+      "semi": ["error", "always"], 
+      
+      // Enforces single quotes for strings unless a string contains a single quote.
+      "quotes": ["error", "single", { "avoidEscape": true }],
+      
+      // Enforces consistent indentation, using 2 spaces.
+      "indent": ["error", 2],
+      
+      // Disallows using the `any` type. This rule is great for ensuring type safety.
+      // The default `@typescript-eslint/no-explicit-any` rule is an error.
+      "@typescript-eslint/no-explicit-any": "error",
+      
+      // Avoids using the empty object type `{}` which can be overly permissive.
+      // We recommend using `object` or `unknown` instead.
+      "@typescript-eslint/no-empty-object-type": "error",
+      
+      // Enforces a consistent order of imports.
+      "import/order": [
+        "error",
+        {
+          "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
+          "newlines-between": "always"
+        }
+      ],
     },
   },
 ];
 
-export default eslintConfig;
+export default eslintconfig;
