@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "db:init": "prisma init",
+    "db:migrate": "prisma migrate dev --name init_tables",
+    "db:generate": "prisma generate"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
@@ -20,23 +23,33 @@
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.1",
+    "@prisma/client": "6.13.0",
     "@reduxjs/toolkit": "^2.8.2",
     "@tailwindcss/postcss": "^4.1.11",
+    "bcrypt": "^6.0.0",
     "clsx": "^2.1.1",
+    "jsonwebtoken": "^9.0.2",
     "next": "15.4.4",
+    "pg": "^8.16.3",
     "postcss": "^8.5.6",
+    "prisma": "^6.13.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-redux": "^9.2.0",
     "redux-persist": "^6.0.0",
     "server-only": "^0.0.1",
+    "swagger-ui-dist": "^5.27.1",
+    "swagger-ui-react": "^5.27.1",
     "tailwindcss": "^4.1.11"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@types/bcrypt": "^6.0.0",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/swagger-ui-react": "^5.18.0",
     "@typescript-eslint/eslint-plugin": "^8.39.0",
     "@typescript-eslint/parser": "^8.39.0",
     "eslint": "^9.32.0",
@@ -44,6 +57,7 @@
     "husky": "^9.1.7",
     "lint-staged": "^16.1.4",
     "prettier": "^3.6.2",
+    "prisma": "^5.14.0",
     "typescript": "^5"
   }
 }
