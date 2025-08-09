@@ -13,7 +13,7 @@ const compat = new FlatCompat({
   recommendedConfig: ts.configs["eslint-recommended"],
 });
 
-export default [
+const eslintConfig = [
   // This object contains settings for all files.
   // We'll define language options and global variables here.
   {
@@ -71,3 +71,5 @@ export default [
     },
   },
 ];
+
+export default eslintConfig;
