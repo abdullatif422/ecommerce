@@ -1,57 +1,57 @@
 // app/api/swagger/route.ts
 
-import { NextRequest, NextResponse } from 'next/server';
+// import { NextRequest } from 'next/server';
 
 // Define your OpenAPI specification here as a JSON object.
 // This is the core of your API documentation.
 const openApiSpec = {
-  openapi: '3.0.0',
+  openapi: "3.0.0",
   info: {
-    title: 'Authentication API',
-    version: '1.0.0',
-    description: 'API for user login and signup with JWT support.',
+    title: "Authentication API",
+    version: "1.0.0",
+    description: "API for user login and signup with JWT support.",
   },
   servers: [
     {
-      url: '/',
-      description: 'Local server',
+      url: "/",
+      description: "Local server",
     },
   ],
   paths: {
-    '/api/login': {
+    "/api/login": {
       post: {
-        summary: 'User Login',
-        description: 'Authenticates a user and returns a JWT token.',
+        summary: "User Login",
+        description: "Authenticates a user and returns a JWT token.",
         requestBody: {
           required: true,
           content: {
-            'application/json': {
+            "application/json": {
               schema: {
-                type: 'object',
+                type: "object",
                 properties: {
-                  email: { type: 'string', format: 'email' },
-                  password: { type: 'string', format: 'password' },
+                  email: { type: "string", format: "email" },
+                  password: { type: "string", format: "password" },
                 },
-                required: ['email', 'password'],
+                required: ["email", "password"],
               },
             },
           },
         },
         responses: {
-          '200': {
-            description: 'Login successful',
+          "200": {
+            description: "Login successful",
             content: {
-              'application/json': {
+              "application/json": {
                 schema: {
-                  type: 'object',
+                  type: "object",
                   properties: {
-                    message: { type: 'string' },
-                    token: { type: 'string' },
+                    message: { type: "string" },
+                    token: { type: "string" },
                     user: {
-                      type: 'object',
+                      type: "object",
                       properties: {
-                        id: { type: 'number' },
-                        email: { type: 'string' },
+                        id: { type: "number" },
+                        email: { type: "string" },
                       },
                     },
                   },
@@ -59,45 +59,45 @@ const openApiSpec = {
               },
             },
           },
-          '400': { description: 'Missing email or password' },
-          '401': { description: 'Invalid credentials' },
-          '500': { description: 'Internal server error' },
+          "400": { description: "Missing email or password" },
+          "401": { description: "Invalid credentials" },
+          "500": { description: "Internal server error" },
         },
       },
     },
-    '/api/signup': {
+    "/api/signup": {
       post: {
-        summary: 'User Signup',
-        description: 'Registers a new user.',
+        summary: "User Signup",
+        description: "Registers a new user.",
         requestBody: {
           required: true,
           content: {
-            'application/json': {
+            "application/json": {
               schema: {
-                type: 'object',
+                type: "object",
                 properties: {
-                  email: { type: 'string', format: 'email' },
-                  password: { type: 'string', format: 'password' },
+                  email: { type: "string", format: "email" },
+                  password: { type: "string", format: "password" },
                 },
-                required: ['email', 'password'],
+                required: ["email", "password"],
               },
             },
           },
         },
         responses: {
-          '201': {
-            description: 'Account created successfully',
+          "201": {
+            description: "Account created successfully",
             content: {
-              'application/json': {
+              "application/json": {
                 schema: {
-                  type: 'object',
+                  type: "object",
                   properties: {
-                    message: { type: 'string' },
+                    message: { type: "string" },
                     user: {
-                      type: 'object',
+                      type: "object",
                       properties: {
-                        id: { type: 'number' },
-                        email: { type: 'string' },
+                        id: { type: "number" },
+                        email: { type: "string" },
                       },
                     },
                   },
@@ -105,9 +105,9 @@ const openApiSpec = {
               },
             },
           },
-          '400': { description: 'Missing email or password' },
-          '409': { description: 'Email already exists' },
-          '500': { description: 'Internal server error' },
+          "400": { description: "Missing email or password" },
+          "409": { description: "Email already exists" },
+          "500": { description: "Internal server error" },
         },
       },
     },
@@ -118,11 +118,11 @@ const openApiSpec = {
  * Handles GET requests to serve the OpenAPI specification.
  * @param {NextRequest} req
  */
-export async function GET(req: NextRequest) {
+export async function GET() {
   return new Response(JSON.stringify(openApiSpec), {
     status: 200,
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
   });
 }

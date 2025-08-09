@@ -11,11 +11,11 @@ const sql = neon(process.env.DATABASE_URL || "");
 const jwtSecret = process.env.JWT_SECRET;
 
 // Define a type for the user object from the database.
-interface User {
-  id: number;
-  email: string;
-  password: string;
-}
+// interface User {
+//   id: number;
+//   email: string;
+//   password: string;
+// }
 
 /**
  * Handles POST requests for user login.

@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "lint:fix": "eslint . --fix",
+    "lint:fix": "eslint . --fix --config eslint.config.mjs",
     "prepare": "husky install",
     "db:init": "prisma init",
     "db:migrate": "prisma migrate dev --name init_tables",

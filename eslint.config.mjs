@@ -15,6 +15,12 @@ const compat = new FlatCompat({
 
 const eslintconfig = [
   {
+    ignores: [
+    '**/.next/**',
+    "src/generated/**"
+    ]
+  },
+  {
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: "module",
@@ -30,7 +36,8 @@ const eslintconfig = [
   }),
 
   {
-    files: ["**/*.ts", "**/*.tsx"],
+    // files: ["**/*.ts", "**/*.tsx"],
+    files: ["src/**/*.{ts,tsx,js,jsx}"],
     languageOptions: {
       parser: ts.parser,
       parserOptions: {
