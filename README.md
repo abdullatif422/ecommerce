@@ -67,6 +67,18 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 `
 
+- Add login page with ui, api & swagger support
+  - Add session maintain support.
+- Add sign up page with ui, api & swagger support
+- Add forgot password with ui, api & swagger support
+- Add dashboard with ui, api & swagger support
+- Add card with ui, api & swagger support
+- Add orders with ui, api & swagger support
+- Add invoice with ui, api & swagger support
+  `
+
+`
+
 - Create basic project with next js and type script
 - Add required dependecies and project folder strcture.
   - This should satisfy:
