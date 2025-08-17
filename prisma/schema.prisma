@@ -8,63 +8,92 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// Corrected: Model name should be singular, PascalCase
 model User {
   id        Int      @id @default(autoincrement())
   email     String   @unique
   password  String
   name      String?
   createdAt DateTime @default(now())
+  
+  // Corrected: Relations now refer to the singular model names
   orders    Order[]
   reports   Report[]
+
+  @@map("users")
 }
 
+// Corrected: Model name should be singular, PascalCase
 model Product {
-  id          Int         @id @default(autoincrement())
+  id          Int      @id @default(autoincrement())
   name        String
   description String?
-  price       Decimal     @db.Decimal(10, 2)
-  stock       Int         @default(0)
-  createdAt   DateTime    @default(now())
+  price       Decimal  @db.Decimal(10, 2)
+  stock       Int      @default(0)
+  createdAt   DateTime @default(now())
+
+  // Corrected: Relation now refers to the singular model name
   orderItems  OrderItem[]
+
+  @@map("products")
 }
 
+// Corrected: Model name should be singular, PascalCase
 model Order {
-  id         Int         @id @default(autoincrement())
+  id         Int      @id @default(autoincrement())
   userId     Int
-  status     String      @default("pending")
-  totalPrice Decimal     @db.Decimal(10, 2)
-  createdAt  DateTime    @default(now())
+  status     String   @default("pending")
+  totalPrice Decimal  @db.Decimal(10, 2)
+  createdAt  DateTime @default(now())
+
+  // Corrected: Relations now refer to the singular model names
   invoice    Invoice?
-  user       User        @relation(fields: [userId], references: [id])
+  user       User     @relation(fields: [userId], references: [id])
   items      OrderItem[]
+
+  @@map("orders")
 }
 
+// Corrected: Model name should be singular, PascalCase
 model OrderItem {
-  id        Int     @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   orderId   Int
   productId Int
   quantity  Int
-  price     Decimal @db.Decimal(10, 2)
-  order     Order   @relation(fields: [orderId], references: [id])
-  product   Product @relation(fields: [productId], references: [id])
+  price     Decimal  @db.Decimal(10, 2)
+
+  // Corrected: Relations now refer to the singular model names
+  order     Order    @relation(fields: [orderId], references: [id])
+  product   Product  @relation(fields: [productId], references: [id])
 
   @@unique([orderId, productId])
+  @@map("orderItems") // You can also force snake_case if preferred: @@map("order_items")
 }
 
+// Corrected: Model name should be singular, PascalCase
 model Invoice {
   id        Int      @id @default(autoincrement())
   orderId   Int      @unique
   amount    Decimal  @db.Decimal(10, 2)
   status    String   @default("pending")
   createdAt DateTime @default(now())
+
+  // Corrected: Relation now refers to the singular model name
   order     Order    @relation(fields: [orderId], references: [id])
+
+  @@map("invoices")
 }
 
+// Corrected: Model name should be singular, PascalCase
 model Report {
   id        Int      @id @default(autoincrement())
   userId    Int
   title     String
   content   String
   createdAt DateTime @default(now())
+
+  // Corrected: Relation now refers to the singular model name
   user      User     @relation(fields: [userId], references: [id])
+
+  @@map("reports")
 }

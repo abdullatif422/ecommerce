@@ -29,6 +29,7 @@
     "@tailwindcss/postcss": "^4.1.11",
     "bcrypt": "^6.0.0",
     "clsx": "^2.1.1",
+    "formik": "^2.4.6",
     "jsonwebtoken": "^9.0.2",
     "next": "15.4.4",
     "next-swagger-doc": "^0.4.1",
@@ -41,7 +42,8 @@
     "redux-persist": "^6.0.0",
     "server-only": "^0.0.1",
     "swagger-ui-react": "^5.27.1",
-    "tailwindcss": "^4.1.11"
+    "tailwindcss": "^4.1.11",
+    "yup": "^1.7.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
